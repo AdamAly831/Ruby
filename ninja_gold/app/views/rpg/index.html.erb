@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GET DAT NINJA MONY</title>
+	 
+</head>
+<body>
+<div id = "wrapper">
+	<p> your gold  <b><%= @total_golds %></b></p> <!-- this is the top right counter -->   
+		<div id = "places">
+			<form action="/rpg/process" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="farm">
+				<ul> 
+					<li> <b>Farm</b> </li>
+					<li>earns 10-20 gold</li>
+					<li><input type="submit" value="Find Gold!" /></li>
+				</ul>
+			</form>
+			<form action="/rpg/process" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="cave">
+				<ul> 
+					<li> <b>Cave</b> </li>
+					<li>earns 5-10 gold</li>
+					<li><input type="submit" value="Find Gold!" /></li>
+				</ul>
+			</form>
+			<form action="/rpg/process" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="house">
+				<ul> 
+					<li> <b>House</b> </li>
+					<li>earns 2-5 golds</li>
+					<li><input type="submit" value="Find Gold!" /></li>
+				</ul>
+			</form><form action="/rpg/process" method="post">
+				<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+				<input type="hidden" name="building" value="casino">
+				<ul> 
+					<li> <b>Casino</b> </li>
+					<li>earns/takes 0-50 golds</li>
+				<li><input type="submit" value="Find Gold!" /></li>
+				</ul>
+			</form>
+		</div>
+	<div>
+		<p>Activities:</p>
+		<div id="activities">
+			<% if @activities %>
+				<% @activities.each do |element| %>
+					<% if element.include?("Earned") %>
+						<p class="earned"><%= element %></p>
+					<% else %>
+						<p class="lost"><%= element %></p>
+					<% end %>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
+</div>
+</body>
+</html>

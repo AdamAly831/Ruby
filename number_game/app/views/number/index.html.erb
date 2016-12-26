@@ -1,0 +1,21 @@
+<div class="container">
+	<h1>the Great Number Game</h1>
+	<h4>I am thinking of a number between 1 and 100</h4>
+	<h4>Take a guess!</h4>
+	<form action="/answer" method="post">
+		<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/> 
+		<input type="text" name="number">
+		<input type="submit" name="Guess" class="btn btn-success" value="Submit">
+	</form>
+	<!-- This will be shown if the user got the correct answer -->
+	<% if flash[:status] == true %>
+		<div class="well message" id="green">
+			<p><%= flash[:message] %></p>
+		</div>
+	<!-- This will be shown if the user did not get the correct answer together with the message -->
+	<% elsif flash[:status] == false %>
+		<div class="well message red">
+			<p><%= flash[:message] %></p>
+		</div>
+	<% end %>
+</div>

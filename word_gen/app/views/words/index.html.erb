@@ -1,0 +1,12 @@
+ <div>
+ 	<h2> Random word (attempt # <%= session[:counter]%>) </h2>
+ 	<p> <%= session[:random_word] if session[:random_word].present?%></p>
+ 	<form action="/create_word" method="post">
+			<input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/> 
+			<input type="submit" value="Generate">
+		</form>
+ 		
+
+ 	</form>
+
+ </div>
